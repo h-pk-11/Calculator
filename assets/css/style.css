@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+:root {
+    --grey-050: #f5f7fa;
+    --grey-100: #e4e7eb;
+    --grey-200: #cbd2d9;
+    --grey-300: #9aa5b1;
+    --grey-400: #7b8794;
+    --grey-500: #616e7c;
+    --grey-600: #52606d;
+    --grey-700: #3e4c59;
+    --grey-800: #323f4b;
+    --grey-900: #1f2933;
+
+    --violet-100: #F2C7FB;
+    --violet-200: #E48AF7;
+    --violet-300: #D856F3;
+    --violet-400: #CE29F0;
+    --violet-500: #BD10E0;
+    --violet-600: #9D0DBA;
+    --violet-700: #820B9A;
+    --violet-800: #6C0980;
+    --violet-900: #5A076A;
+
+    --blue-100: #FFFFFF;
+    --blue-200: #E5EFFB;
+    --blue-300: #A9CBF1;
+    --blue-400: #76ABE9;
+    --blue-500: #4A90E2;
+    --blue-600: #2275D7;
+    --blue-700: #1C61B2;
+    --blue-800: #175194;
+    --blue-900: #13437B;
+
+    --orange-100: #FFFFFF;
+    --orange-200: #FCE7C4;
+    --orange-300: #F9CE86;
+    --orange-400: #F7B851;
+    --orange-500: #F5A623;
+    --orange-600: #DE8E0A;
+    --orange-700: #B87608;
+    --orange-800: #996207;
+    --orange-900: #7F5106;
+
+    --green-100: #E6F8D2;
+    --green-200: #C6EF98;
+    --green-300: #AAE867;
+    --green-400: #92E13D;
+    --green-500: #7ED321;
+    --green-600: #69AF1B;
+    --green-700: #579116;
+    --green-800: #487812;
+    --green-900: #3C640F;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Kelly Slab", Arial, Helvetica, sans-serif;
+}
+
+.app {
+    background-image: linear-gradient(135deg, var(--green-800), var(--green-900));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.calculator {
+    background-color: var(--grey-700);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.calculator_display {
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 375px;
+}
+
+.container {
+    background-color: var(--grey-300);
+    flex: 1;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.screen {
+    flex: 1;
+    background-color: var(--green-500);
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    padding: 0.25rem 0.25rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    font-size: calc(1rem * 1.2 * 1.2 * 1.2 * 1.2);
+    box-shadow: inset 0 0 3px 3px rgba(40, 59, 4, 0.5);
+}
+
+.calculator_keys {
+    background-color: var(--grey-800);
+    border-top-right-radius: 0.75rem;
+    border-top-left-radius: 0.75rem;
+    padding: 1rem 1rem 1rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "allClear signs percent divide"
+        "seven eight nine times"
+        "four five six minus"
+        "one two three plus"
+        "zero decimal equal equal";
+
+    grid-column-gap: 1rem;
+    grid-row-gap: 1.5rem;
+    box-shadow: 2px -2px 2px 2px rgb(0, 0, 0, 0.3);
+}
+
+.key {
+    display: inline-block;
+    background-color: var(--grey-050);
+    height: calc((375px - 2rem - 1rem * 3)/8);
+    text-align: center;
+    font-size: calc(1rem * 1.2 * 1.2);
+    font-weight: 300;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius:1rem;
+    border: 0;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+[data-key="one"] {
+    grid-area: one;
+}
+
+[data-key="two"] {
+    grid-area: two;
+}
+
+[data-key="three"] {
+    grid-area: three;
+}
+
+[data-key="four"] {
+    grid-area: four;
+}
+
+[data-key="five"] {
+    grid-area: five;
+}
+
+[data-key="six"] {
+    grid-area: six;
+}
+
+[data-key="seven"] {
+    grid-area: seven;
+}
+
+[data-key="eight"] {
+    grid-area: eight;
+}
+
+[data-key="nine"] {
+    grid-area: nine;
+}
+
+[data-key="allClear"] {
+    grid-area: allClear;
+}
+
+[data-key="percent"] {
+    grid-area: percent;
+}
+
+[data-key="decimal"] {
+    grid-area: decimal;
+}
+
+[data-key="signs"] {
+    grid-area: signs;
+}
+
+[data-key="plus"] {
+    grid-area: plus;
+}
+
+[data-key="minus"] {
+    grid-area: minus;
+}
+
+[data-key="times"] {
+    grid-area: times;
+}
+
+[data-key="divide"] {
+    grid-area: divide;
+}
+
+[data-key="equal"] {
+    grid-area: equal;
+}
+
+[data-key="equal"]:active,
+[data-type="number"]:active {
+    background-color: var(--grey-300);
+}
+
+[data-type="operator"] {
+    background-color: var(--grey-200);
+}
+[data-type="operator"]:active {
+    background-color: var(--grey-300);
+}
+
+[data-type="operator_t1"] {
+    background-color: var(--orange-500);
+}
+[data-type="operator_t1"]:active {
+    background-color: var(--orange-600);
+}
