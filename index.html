@@ -15,6 +15,16 @@
     <script src="./assets/javascript/main.js" defer></script>
 </head>
 <body>
+
+    <header class="header">
+        <p>
+          Nosreme (h-pk-11) 
+        </p>
+        <a href="https://github.com/h-pk-11/Calculator" target="_blank">
+          source
+        </a>
+    </header>
+
     <div class="app">
         <div class="calculator">
             <div class="calculator_display">
@@ -23,28 +33,41 @@
                 </div>
             </div>
             <div class="calculator_keys">
-                <button class="key" data-key="plus" data-type="operator">&plus;</button>
-                <button class="key" data-key="minus" data-type="operator">&minus;</button>
-                <button class="key" data-key="times" data-type="operator">&times;</button>
-                <button class="key" data-key="divide" data-type="operator">&divide;</button>
-                <button class="key" data-key="zero" data-type="number">0</button>
-                <button class="key" data-key="one" data-type="number">1</button>
-                <button class="key" data-key="two" data-type="number">2</button>
-                <button class="key" data-key="three" data-type="number">3</button>
-                <button class="key" data-key="four" data-type="number">4</button>
-                <button class="key" data-key="five" data-type="number">5</button>
-                <button class="key" data-key="six" data-type="number">6</button>
-                <button class="key" data-key="seven" data-type="number">7</button>
-                <button class="key" data-key="eight" data-type="number">8</button>
-                <button class="key" data-key="nine" data-type="number">9</button>
-                <button class="key" data-key="allClear" data-type="allClear">AC</button>
-                <button class="key" data-key="signs" data-type="number">+/-</button>
-                <button class="key" data-key="percent" data-type="number">%</button>
-                <button class="key" data-key="decimal" data-type="number">.</button>
-                <button class="key" data-key="delete" data-type="number">DEL</button>
-                <button class="key" data-key="equal" data-type="equal">=</button>
+                <button class="key" data-key-code="107" data-key="plus" data-type="operator">&plus;</button>
+                <button class="key" data-key-code="109" data-key="minus" data-type="operator">&minus;</button>
+                <button class="key" data-key-code="106" data-key="times" data-type="operator">&times;</button>
+                <button class="key" data-key-code="111" data-key="divide" data-type="operator">&divide;</button>
+                <button class="key" data-key-code="96" data-key="zero" data-type="number">0</button>
+                <button class="key" data-key-code="97" data-key="one" data-type="number">1</button>
+                <button class="key" data-key-code="98" data-key="two" data-type="number">2</button>
+                <button class="key" data-key-code="99" data-key="three" data-type="number">3</button>
+                <button class="key" data-key-code="100" data-key="four" data-type="number">4</button>
+                <button class="key" data-key-code="101" data-key="five" data-type="number">5</button>
+                <button class="key" data-key-code="102" data-key="six" data-type="number">6</button>
+                <button class="key" data-key-code="103" data-key="seven" data-type="number">7</button>
+                <button class="key" data-key-code="104" data-key="eight" data-type="number">8</button>
+                <button class="key" data-key-code="105" data-key="nine" data-type="number">9</button>
+                <button class="key" data-key-code="46" data-key="allClear" data-type="allClear">AC</button>
+                <button class="key" data-key-code="192" data-key="signs" data-type="number">+/-</button>
+                <button class="key" data-key-code="53" data-key="percent" data-type="number">%</button>
+                <button class="key" data-key-code="110" data-key="decimal" data-type="number">.</button>
+                <button class="key" data-key-code="8" data-key="backSpace" data-type="number">&#8617;</button>
+                <button class="key" data-key-code="13" data-key="equal" data-type="equal">=</button>
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <p>
+            AC  <=> Delete in Keyboard
+        </p>
+        <p>
+            "=" <=> Enter in Keyboard
+        </p>
+        <p>
+            "+/-" <=> "~" in Keyboard
+        </p>
+    </footer>
+
 </body>
 </html>

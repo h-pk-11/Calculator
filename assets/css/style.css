@@ -66,7 +66,7 @@ html {
 
 .app {
     background-color: rgba(19, 67, 123, 0.1);
-    height: 100vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,7 +133,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-        "delete signs percent divide"
+        "backSpace signs percent divide"
         "seven eight nine times"
         "four five six minus"
         "one two three plus"
@@ -227,13 +227,14 @@ button {
     grid-area: divide;
 }
 
-[data-key="delete"] {
-    grid-area: delete;
-    font-size: calc(1rem * 1.2);
+[data-key="backSpace"] {
+    grid-area: backSpace;
+    font-size: calc(1rem * 1.2 * 1.2 * 1.2);
 }
 
 [data-key="equal"] {
     grid-area: equal;
+    transition: background-color 0.05s linear;
 }
 
 [data-key="equal"]:active,
@@ -243,6 +244,7 @@ button {
 
 [data-type="operator"] {
     background-color: var(--grey-200);
+    transition: background-color 0.05s linear;
 }
 [data-type="operator"]:active {
     background-color: var(--grey-300);
@@ -252,21 +254,54 @@ button {
     background-color: var(--grey-300);
 }
 
-[data-key="delete"],
+[data-key="backSpace"],
 [data-key="signs"],
 [data-key="percent"] {
     background-color: var(--orange-500);
+    transition: background-color 0.05s linear;
 }
 
-[data-key="delete"]:active,
+[data-key="backSpace"]:active,
 [data-key="signs"]:active,
 [data-key="percent"]:active {
     background-color: var(--orange-600);
 }
 
+.selected_ {
+    background-color: var(--orange-600);
+}
+
 [data-key="allClear"] {
     background-color: var(--red-300);
+    transition: background-color 0.05s linear;
 }
 [data-key="allClear"]:active {
     background-color: var(--red-400);
 }
+
+.selected__ {
+    background-color: var(--red-400);
+}
+
+.header {
+    background-color: rgba(19, 67, 123, 0.1);
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer {
+    background-color: rgba(19, 67, 123, 0.1);
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+
+
+

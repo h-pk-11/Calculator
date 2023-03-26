@@ -10,19 +10,10 @@ calculator.dataset.firstNumber = '';
 calculator.dataset.operator = '';
 calculator.dataset.secondNumber = '';
 
+function handleTheKey(key){
 
-keys.addEventListener('click', event => {
-
-    if (!event.target.closest('button')) { return; }
-    const key = event.target;
     const keyValue = key.textContent;
     let screenValue = screen.textContent;
-
-    // remove .selected in operator key
-    const previousKey = calculator.querySelector(`[data-key='${calculator.dataset.operator}']`);
-    if (previousKey) {
-        previousKey.classList.remove('selected');
-    }
 
     if (key.dataset.type === 'number') {
         
@@ -34,7 +25,7 @@ keys.addEventListener('click', event => {
 
             screen.textContent = `${Number(screenValue)/100}`;
 
-        }else if(key.dataset.key === "delete"){
+        }else if(key.dataset.key === "backSpace"){
 
             if(screen.textContent != '0'){
 
@@ -42,14 +33,14 @@ keys.addEventListener('click', event => {
                 if(screen.textContent === ''){
                     screen.textContent = '0';
                 }
-
             }
 
         }else{
 
             if (key.dataset.key === 'decimal') {
                 if(calculator.dataset.previousKeyType === 'equal'){
-                    screen.textContent += ("0" + keyValue);
+
+                    screen.textContent = ("0" + keyValue);
                 }else{
                     if (!screenValue.includes('.')) {
                         screen.textContent += keyValue;
@@ -67,15 +58,11 @@ keys.addEventListener('click', event => {
             }
     
         }
-
-        
-
     }
 
     if (key.dataset.type === 'operator') {
         key.classList.add('selected');
 
-        
         if(calculator.dataset.secondNumber === ''){
             calculator.dataset.secondNumber = screen.textContent;
         }else{
@@ -83,8 +70,6 @@ keys.addEventListener('click', event => {
             calculator.dataset.secondNumber = screen.textContent;
         }
      
-
-
         if(calculator.dataset.firstNumber != ''
         && calculator.dataset.secondNumber != ''
         && calculator.dataset.operator != ''){
@@ -98,10 +83,8 @@ keys.addEventListener('click', event => {
             calculator.dataset.firstNumber = calculator.dataset.secondNumber;
             calculator.dataset.secondNumber = screen.textContent;
         }
-
         
         calculator.dataset.operator = key.dataset.key;
-  
     }
 
     if (key.dataset.type === 'equal') {
@@ -125,7 +108,6 @@ keys.addEventListener('click', event => {
             calculator.dataset.firstNumber = '';
             calculator.dataset.secondNumber = '';
         }
-        
     }
 
     if(key.dataset.type === 'allClear'){
@@ -135,10 +117,23 @@ keys.addEventListener('click', event => {
         screen.textContent = '0';
     }
 
-
     calculator.dataset.previousKeyType = key.dataset.type;
-});
+}
 
+keys.addEventListener('click', event => {
+
+    if (!event.target.closest('button')) { return; }
+    const key = event.target;
+    const keyValue = key.textContent;
+    let screenValue = screen.textContent;
+
+    const previousKey = calculator.querySelector(`[data-key='${calculator.dataset.operator}']`);
+    if (previousKey) {
+        previousKey.classList.remove('selected');
+    }
+
+    handleTheKey(key);
+});
 
 function calculate(firstNumber, operator, secondNumber) {
     let result;
@@ -160,7 +155,6 @@ function calculate(firstNumber, operator, secondNumber) {
         } else {
             result = Number(firstNumber) / Number(secondNumber);
         }
-
     }
 
     if(result.toString().includes('.')){
@@ -168,3 +162,56 @@ function calculate(firstNumber, operator, secondNumber) {
     }
     return result;
 }
+
+window.addEventListener('keydown', event => {
+
+    const key = calculator.querySelector(`[data-key-code="${event.keyCode}"]`);
+    if(key){
+
+        const previousKey = calculator.querySelector(`[data-key='${calculator.dataset.operator}']`);
+        if (previousKey) {
+            previousKey.classList.remove('selected');
+        }
+
+        if(key.dataset.type === 'operator'){
+            key.classList.add('selected');
+        }else if(key.dataset.type === 'number'){
+            if(key.dataset.key === 'percent'
+            || key.dataset.key === 'backSpace'
+            || key.dataset.key === 'signs'){
+                key.classList.add('selected_');
+            }else{
+                key.classList.add('selected');
+            }
+        }else if(key.dataset.type === 'equal'){
+            key.classList.add('selected');
+        }else if(key.dataset.key === 'allClear'){
+            key.classList.add('selected__');
+        }
+
+        handleTheKey(key);
+    }
+});
+
+window.addEventListener('keyup', event => {
+
+    const key = calculator.querySelector(`[data-key-code="${event.keyCode}"]`);
+    if(key){
+
+        if(key.dataset.type === 'number'){
+            
+            if(key.dataset.key === 'percent'
+            || key.dataset.key === 'backSpace'
+            || key.dataset.key === 'signs'){
+                key.classList.remove('selected_');
+            }else{
+                key.classList.remove('selected');
+            }
+
+        }else if(key.dataset.type === 'equal'){
+            key.classList.remove('selected');
+        }else if(key.dataset.key === 'allClear'){
+            key.classList.remove('selected__');
+        }
+    }
+});
