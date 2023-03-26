@@ -133,11 +133,11 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-        "allClear signs percent divide"
+        "delete signs percent divide"
         "seven eight nine times"
         "four five six minus"
         "one two three plus"
-        "zero decimal equal equal";
+        "zero decimal allClear equal";
 
     grid-column-gap: 1rem;
     grid-row-gap: 1.5rem;
@@ -196,6 +196,7 @@ button {
 
 [data-key="allClear"] {
     grid-area: allClear;
+    font-size: calc(1rem * 1.2);
 }
 
 [data-key="percent"] {
@@ -226,6 +227,11 @@ button {
     grid-area: divide;
 }
 
+[data-key="delete"] {
+    grid-area: delete;
+    font-size: calc(1rem * 1.2);
+}
+
 [data-key="equal"] {
     grid-area: equal;
 }
@@ -246,10 +252,13 @@ button {
     background-color: var(--grey-300);
 }
 
+[data-key="delete"],
 [data-key="signs"],
 [data-key="percent"] {
     background-color: var(--orange-500);
 }
+
+[data-key="delete"]:active,
 [data-key="signs"]:active,
 [data-key="percent"]:active {
     background-color: var(--orange-600);
